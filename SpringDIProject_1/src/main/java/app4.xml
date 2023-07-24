@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 클래스 등록 -->
+	<bean id="sa1" class="com.sist.main4.Sawon"
+		p:sabun="1"
+		p:name="홍길동"
+		p:dept="개발부"
+		p:job="대리"
+		p:pay="4200"
+		init-method="init"			
+		destroy-method="destroy"
+	/>
+	<bean id="mc" class="com.sist.main4.MainClass"
+		p:sa-ref="sa1"
+	/>
+	<!-- 
+		p:sa-ref=""
+		=======> 생성된 객체의 주소를 그대로 넣을 경우 ref 사용.
+				DAO의 주소를 넘길 경우 사용 많음
+		
+			객체 생성과 동시에 값을 주입 : DI
+				멤버변수의 초기화
+				setXxx() / 생성자 
+				메소드 호출이 가능 ==> 객체 생성시 (init-method)
+								   객체 소멸시 (destroy-method)
+				메소드 DI 종류
+	 -->
+</beans>
