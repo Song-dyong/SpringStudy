@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper>
+  	<sql id="select-sql">
+  		SELECT no, title, address, msg
+  		FROM seoul_nature
+  	</sql>
+  	<select id="natureListData" resultType="SeoulNatureVO">
+  		<!-- include를 사용하여 코딩 줄이기 -->
+  		SELECT no, title, address, msg, rownum
+  		FROM (SELECT no, title, address, msg FROM seoul_shop ORDER BY no ASC)
+  		WHERE rownum&lt;=10
+  	</select>
+  	<select id="natureDetailData" resultType="SeoulNatureVO" parameterType="int">
+  		<include refid="select-sql"/>
+  		WHERE no=#{no}
+  	</select>
+  </mapper>
