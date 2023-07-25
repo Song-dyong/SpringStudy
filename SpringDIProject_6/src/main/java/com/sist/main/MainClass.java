@@ -33,6 +33,7 @@ public class MainClass {
 		System.out.println("address: "+vo.getAddress());
 		System.out.println("msg: "+vo.getMsg());
 	}
+	//ddddddd
 //	public void natureMain() {
 //		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
 //		NatureDAO dao=(NatureDAO)app.getBean("ndao");
