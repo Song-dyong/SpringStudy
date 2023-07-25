@@ -6,13 +6,13 @@
 	<!-- VO등록 -->
 	<typeAliases>
 		<typeAlias type="com.sist.vo.SeoulLocationVO" alias="SeoulLocationVO"/>
-		<typeAlias type="com.sist.vo.SeoulShopVO" alias="SeoulShopVO"/>
 		<typeAlias type="com.sist.vo.SeoulNatureVO" alias="SeoulNatureVO"/>
+		<typeAlias type="com.sist.vo.SeoulShopVO" alias="SeoulShopVO"/>
 	</typeAliases>
 	<!-- mapper.xml 등록 -->
 	<mappers>
 		<mapper resource="com/sist/mapper/location-mapper.xml"/>
-		<mapper resource="com/sist/mapper/shop-mapper.xml"/>
 		<mapper resource="com/sist/mapper/nature-mapper.xml"/> 
+		<mapper resource="com/sist/mapper/shop-mapper.xml"/>
 	</mappers>
 </configuration>
