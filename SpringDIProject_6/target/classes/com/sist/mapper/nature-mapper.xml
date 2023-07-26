@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper>
+  <mapper namespace="com.sist.mapper.nature-mapper">
   	<sql id="select-sql">
   		SELECT no, title, address, msg
   		FROM seoul_nature
@@ -10,7 +10,7 @@
   	<select id="natureListData" resultType="SeoulNatureVO">
   		<!-- include를 사용하여 코딩 줄이기 -->
   		SELECT no, title, address, msg, rownum
-  		FROM (SELECT no, title, address, msg FROM seoul_shop ORDER BY no ASC)
+  		FROM (SELECT no, title, address, msg FROM seoul_nature ORDER BY no ASC)
   		WHERE rownum&lt;=10
   	</select>
   	<select id="natureDetailData" resultType="SeoulNatureVO" parameterType="int">

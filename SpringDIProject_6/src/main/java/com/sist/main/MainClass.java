@@ -21,7 +21,7 @@ public class MainClass {
 			System.out.println(vo.getNo()+". "+vo.getTitle());
 		}
 	}
-	
+	@Test
 	public void locationDetail() {
 		Scanner scan=new Scanner(System.in);
 		System.out.println("number");
@@ -33,43 +33,46 @@ public class MainClass {
 		System.out.println("address: "+vo.getAddress());
 		System.out.println("msg: "+vo.getMsg());
 	}
-	//ddddddd
-//	public void natureMain() {
-//		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
-//		NatureDAO dao=(NatureDAO)app.getBean("ndao");
-//		List<SeoulNatureVO> list=dao.natureListData();
-//		for(SeoulNatureVO vo:list) {
-//			System.out.println(vo.getNo()+". "+vo.getTitle());
-//		}
-//	}
-//	public void natureDetail() {
-//		Scanner scan=new Scanner(System.in);
-//		System.out.println("number");
-//		int no=scan.nextInt();
-//		ApplicationContext app=new ClassPathXmlApplicationContext("app.xml");
-//		NatureDAO dao=(NatureDAO)app.getBean("ndao");
-//		SeoulNatureVO vo=dao.natureDetail(no);
-//		System.out.println("title: "+vo.getTitle());
-//		System.out.println("address: "+vo.getAddress());
-//		System.out.println("msg: "+vo.getMsg());
-//	}
-//	public void shopMain() {
-//		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
-//		ShopDAO dao=(ShopDAO)app.getBean("sdao");
-//		List<SeoulShopVO> list=dao.shopListData();
-//		for(SeoulShopVO vo:list) {
-//			System.out.println(vo.getNo()+". "+vo.getTitle());
-//		}
-//	}
-//	public void shopDetail() {
-//		Scanner scan=new Scanner(System.in);
-//		System.out.println("number");
-//		int no=scan.nextInt();
-//		ApplicationContext app=new ClassPathXmlApplicationContext("app.xml");
-//		ShopDAO dao=(ShopDAO)app.getBean("sdao");
-//		SeoulShopVO vo=dao.shopDetail(no);
-//		System.out.println("title: "+vo.getTitle());
-//		System.out.println("address: "+vo.getAddress());
-//		System.out.println("msg: "+vo.getMsg());
-//	}
+	@Test
+	public void natureMain() {
+		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
+		NatureDAO dao=(NatureDAO)app.getBean("ndao");
+		List<SeoulNatureVO> list=dao.natureListData();
+		for(SeoulNatureVO vo:list) {
+			System.out.println(vo.getNo()+". "+vo.getTitle());
+		}
+	}
+	@Test
+	public void natureDetail() {
+		Scanner scan=new Scanner(System.in);
+		System.out.println("number");
+		int no=scan.nextInt();
+		ApplicationContext app=new ClassPathXmlApplicationContext("app.xml");
+		NatureDAO dao=(NatureDAO)app.getBean("ndao");
+		SeoulNatureVO vo=dao.natureDetail(no);
+		System.out.println("title: "+vo.getTitle());
+		System.out.println("address: "+vo.getAddress());
+		System.out.println("msg: "+vo.getMsg());
+	}
+	@Test
+	public void shopMain() {
+		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
+		ShopDAO dao=(ShopDAO)app.getBean("sdao");
+		List<SeoulShopVO> list=dao.shopListData();
+		for(SeoulShopVO vo:list) {
+			System.out.println(vo.getNo()+". "+vo.getTitle());
+		}
+	}
+	@Test
+	public void shopDetail() {
+		Scanner scan=new Scanner(System.in);
+		System.out.println("number");
+		int no=scan.nextInt();
+		ApplicationContext app=new ClassPathXmlApplicationContext("app.xml");
+		ShopDAO dao=(ShopDAO)app.getBean("sdao");
+		SeoulShopVO vo=dao.shopDetail(no);
+		System.out.println("title: "+vo.getTitle());
+		System.out.println("address: "+vo.getAddress());
+		System.out.println("msg: "+vo.getMsg());
+	}
 }

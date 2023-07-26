@@ -12,7 +12,7 @@
 	<!-- mapper.xml 등록 -->
 	<mappers>
 		<mapper resource="com/sist/mapper/location-mapper.xml"/>
-		<!-- <mapper resource="com/sist/mapper/nature-mapper.xml"/> 
-		<mapper resource="com/sist/mapper/shop-mapper.xml"/> -->
+		<mapper resource="com/sist/mapper/nature-mapper.xml"/> 
+		<mapper resource="com/sist/mapper/shop-mapper.xml"/>
 	</mappers>
 </configuration>
