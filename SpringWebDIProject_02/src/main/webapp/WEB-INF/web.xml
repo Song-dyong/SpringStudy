@@ -28,7 +28,7 @@
 				wc=new WebApplicationContext(path)
 			}
 			// 사용자 요청 처리	
-			public void service(HttpServletRequest requset, HttpServletResponse response){
+			public void service(HttpServletRequest request, HttpServletResponse response){
 							
 			}
 			// 새로고침 , 페이지 이동시에 메모리 해제

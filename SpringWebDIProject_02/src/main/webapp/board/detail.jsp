@@ -47,8 +47,8 @@
 				</tr>
 				<tr>
 					<td colspan="4" class="text-right">
-						<a href="update.jsp?no=${vo.no }" class="btn btn-xs btn-info">수정</a>
-						<a href="delete.jsp?no=${vo.no }" class="btn btn-xs btn-success">삭제</a>
+						<a href="update.do?no=${vo.no }" class="btn btn-xs btn-info">수정</a>
+						<a href="delete.do?no=${vo.no }" class="btn btn-xs btn-success">삭제</a>
 						<a href="list.do" class="btn btn-xs btn-danger">목록</a>
 					</td>
 				</tr>

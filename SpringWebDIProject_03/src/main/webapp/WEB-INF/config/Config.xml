@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.sist.vo.EmpVO" alias="EmpVO"/>
+		<!-- foodVO, categoryVO를 등록하지 않아도 됨 
+				=> mapper의 resultType에서 패키지 단위로 등록하면 됨
+				alias는 패키지가 길어질 경우, 별칭을 통해 작업하기 위함 
+		-->
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/sist/mapper/emp-mapper.xml"/>
+		<mapper resource="com/sist/mapper/food-mapper.xml"/>
+	</mappers>
+</configuration>
