@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<!-- db.properties 읽어오기 -->
+	<util:properties id="db" location="/WEB-INF/config/db.properties"/>
+	<!-- DataSource : db정보 모아서 전송 목적 -->
+	<!-- #{id['가져올 데이터']}
+		
+		BasicDataSource db=new BasicDataSource();
+		db.setUsername("hr") ...
+	 -->
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="#{db['driver']}"
+		p:url="#{db['url']}"	
+		p:username="#{db['username']}"
+		p:password="#{db['password']}"
+		p:maxActive="#{db['maxActive']}"
+		p:maxIdle="#{db['maxIdle']}"
+		p:maxWait="#{db['maxWait']}"
+	/>
+	<!-- 
+		Default
+		p:maxActive="8"
+		p:maxIdle="#8"
+		p:maxWait="10000"
+	 -->
+	<!-- Transection 등록 (아직 안함) -->
+	<!-- SQLSessionFactory 생성 -->
+	<!-- SqlSessionFactory 생성 : getConnection , disConnection , selectList... -->
+	<!-- 이미 생성된 객체의 주소를 가져올 때 -ref -->
+	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="ds"	
+	/>
+	<!-- Mapper 구현 -->
+	<mybatis-spring:scan base-package="com.sist.mapper" factory-ref="ssf"/>
+	<!-- 모든 것을 자동구현해주기 때문에 라이브러리
+		=> MyBatis를 사용하는 이유 : SQL 쿼리문을 작성 및 생성하기 편하도록
+			getConnection, disConnection, ps.set~ , rs.get~ 등
+			길었던 코딩을 줄일 수 있기 때문에.
+	 -->
+</beans>
