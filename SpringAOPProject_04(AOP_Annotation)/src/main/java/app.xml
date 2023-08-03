@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- AOP 적용하기  @aspect
+			cf) xml로 만들지 않았기 때문에, AOP를 등록해야 어노테이션으로 사용 가능
+			org.aspectj.lang.annotation.Aspect
+	-->
+	<aop:aspectj-autoproxy/>
+	<!-- 사용자 정의 클래스 -->
+	<context:component-scan base-package="com.sist.*"/>
+</beans>
