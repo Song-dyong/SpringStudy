@@ -96,6 +96,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 */
 
 import java.util.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import com.sist.dao.*;
 import com.sist.vo.*;
 
@@ -107,7 +111,7 @@ public class MainController {
 	// 사용자 요청에 대한 처리 
 	
 	@GetMapping("main/main.do")
-	public String main_main(Model model, String cno) {
+	public String main_main(Model model, String cno, HttpServletRequest request) {
 						//	----------	------------
 						//    전송 객체	사용자가 보내준 값
 		if(cno==null)
@@ -116,6 +120,19 @@ public class MainController {
 		map.put("cno", Integer.parseInt(cno));
 		List<CategoryVO> list=dao.foodCategoryData(map);
 		model.addAttribute("list",list);
+		
+		Cookie[] cookies=request.getCookies();
+		List<FoodVO> cList=new ArrayList<FoodVO>();
+		if(cookies!=null) {
+			for(int i=cookies.length-1;i>=0;i--) {
+				if(cookies[i].getName().startsWith("food_")) {
+					String no=cookies[i].getValue();
+					FoodVO vo=dao.foodDetailData(Integer.parseInt(no));
+					cList.add(vo);
+				}
+			}
+		}
+		model.addAttribute("cList",cList);
 		model.addAttribute("main_jsp","../main/home.jsp");
 		return "main/main";
 	}

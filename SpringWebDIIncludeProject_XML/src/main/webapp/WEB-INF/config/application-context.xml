@@ -10,50 +10,43 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 	<!-- AOP 등록 -->
-	<aop:aspectj-autoproxy/>
+	<aop:aspectj-autoproxy />
 	<!-- 사용자 정의 클래스 연결 (패키지 단위로) -->
-	<!-- 패키지 등록 : 모든 클래스를 메모리 할당
-		=> 필요없는 클래스에도 메모리 할당이 되므로, 필요한 클래스만 선별 (어노테이션)
-			1) Model : HandlerMapping에 의해서 찾기 => 스프링에서 메모리 할당 요청
-			2) DAO , Service
-			3) 일반 클래스 : 크롤링 , OpenAPI
-			
-		@Component 		=> 크롤링 / OpenAPI 
-		@Repository 	=> DAO
-		@Service 		=> Service
-		@Controller 	=> Model
-		@RestController	=> Model
-		@ControllerAdvice 	=> 공통 예외처리 (@Controller)
-		@RestControllerAdvice => 공통 예외처리 (@RestController)
-		@Configuration	=> XML을 대신해서 환경 설정할 경우
-			
-		=> 어노테이션과 XML에 동시에 등록 X
-			why? 두개씩 생성되므로
-				=어노테이션 : 사용자 정의 클래스
-				=XML : 라이브러리 (어노테이션이 없음)
-					<bean id="dao" class="com.sist.infoDAO"/>
-				==============================
-				어노테이션 이용시에 DI도 어노테이션을 이용해야함
-				@Autowired 		=> 자동 객체 주소 주입 (Spring이 해당 객체를 찾아서 주소값을 주입)
-				@PostConstruct 	=> init-method (객체 생성시 자동 호출하는 메소드 지정)
-				@PreDestroy		=> destroy-method (객체 소멸시 자동 호출되는 메소드 지정)
-				@Resource		=> 특정 객체를 찾는 경우 (id를 설정해서 객체를 찾는다)
-					ex) @Resource(name="dao") : 단점 - JDK1.8까지만 사용 가능 (이후 버전은 사용 불가)
-	 -->
-	<context:component-scan base-package="com.sist.*"/>
-	<!-- ViewResolver (JSP찾기) : 경로명, 확장자 => JSP를 찾아서 resource 전송-->
-	<!-- <bean> 은 대부분 라이브러리 => id는 사용자 지정 / class는 고정-->
+	<!-- 패키지 등록 : 모든 클래스를 메모리 할당 => 필요없는 클래스에도 메모리 할당이 되므로, 필요한 클래스만 선별 (어노테이션) 
+		1) Model : HandlerMapping에 의해서 찾기 => 스프링에서 메모리 할당 요청 2) DAO , Service 3) 
+		일반 클래스 : 크롤링 , OpenAPI @Component => 크롤링 / OpenAPI @Repository => DAO @Service 
+		=> Service @Controller => Model @RestController => Model @ControllerAdvice 
+		=> 공통 예외처리 (@Controller) @RestControllerAdvice => 공통 예외처리 (@RestController) 
+		@Configuration => XML을 대신해서 환경 설정할 경우 => 어노테이션과 XML에 동시에 등록 X why? 두개씩 생성되므로 
+		=어노테이션 : 사용자 정의 클래스 =XML : 라이브러리 (어노테이션이 없음) <bean id="dao" class="com.sist.infoDAO"/> 
+		============================== 어노테이션 이용시에 DI도 어노테이션을 이용해야함 @Autowired => 
+		자동 객체 주소 주입 (Spring이 해당 객체를 찾아서 주소값을 주입) @PostConstruct => init-method (객체 
+		생성시 자동 호출하는 메소드 지정) @PreDestroy => destroy-method (객체 소멸시 자동 호출되는 메소드 지정) 
+		@Resource => 특정 객체를 찾는 경우 (id를 설정해서 객체를 찾는다) ex) @Resource(name="dao") : 
+		단점 - JDK1.8까지만 사용 가능 (이후 버전은 사용 불가) -->
+	<context:component-scan base-package="com.sist.*" />
+	<!-- ViewResolver (JSP찾기) : 경로명, 확장자 => JSP를 찾아서 resource 전송 -->
+	<!-- <bean> 은 대부분 라이브러리 => id는 사용자 지정 / class는 고정 -->
 	<!-- return "main/main"; -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/"
-		p:suffix=".jsp"
-	/>
-	<!-- return "/main/main.jsp" -->	
-	<!-- multipartResolver (id는 지정되어있음)
-		파일 업로드 (cos.jar)
-		여러 개 동시 업로드 가능
-	 -->
-	<bean id="multipartResolver" 
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-	/>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/" p:suffix=".jsp" />
+	<!-- return "/main/main.jsp" -->
+	<!-- multipartResolver (id는 지정되어있음) 파일 업로드 (cos.jar) 여러 개 동시 업로드 가능 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- @ResponseBody로 String 처리할때 한글처리 -->
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 </beans>

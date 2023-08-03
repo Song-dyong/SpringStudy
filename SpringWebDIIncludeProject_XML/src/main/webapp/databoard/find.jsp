@@ -9,11 +9,21 @@
 </head>
 <body>
 	<div class="row">
-		<h1 class="text-center">자료실</h1>
+		<h3 class="text-center">검색결과</h3>
+		<c:if test="${count==0 }">
+			<table class="table">
+				<tr>
+					<td class="text-center">
+						<h3>검색된 결과가 없습니다.</h3>
+					</td>
+				</tr>
+			</table>
+		</c:if>
+		<c:if test="${count!=0 }">
 		<table class="table">
 			<tr>
-				<td>
-					<a href="../databoard/insert.do" class="btn btn-sm btn-info">새글</a>
+				<td class="text-right">
+					검색결과 <span style="color:orange">${count }</span>건
 				</td>
 			</tr>
 		</table>
@@ -35,23 +45,11 @@
 			</tr>
 			</c:forEach>
 		</table>
+		</c:if>
 		<table class="table">
 			<tr>
-				<td class="text-left">
-				<form method="post" action="../databoard/find.do">
-				Search:<select name="fs" class="input-sm">
-					<option value="name">이름</option>
-					<option value="subject">제목</option>
-					<option value="content">내용</option>
-				</select>
-				<input type="text" class="input-sm" name="ss" size="15">
-				<button class="btn btn-sm btn-success">검색</button>
-				</form>
-				</td>
 				<td class="text-right">
-					<a href="#" class="btn btn-sm btn-primary">이전</a>
-						${curpage } page / ${totalpage } pages
-					<a href="#" class="btn btn-sm btn-danger">다음</a>
+					<a href="../databoard/list.do" class="btn btn-sm btn-primary">목록</a>
 				</td>
 			</tr>
 		</table>

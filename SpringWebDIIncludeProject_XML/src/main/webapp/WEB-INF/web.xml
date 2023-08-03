@@ -7,11 +7,23 @@
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 어노테이션의 컨테이너와 xml의 컨테이너가 다르기 때문에, init-param을 수정 -->
+		 <init-param>					
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/application-*.xml</param-value>	
+		</init-param> 
+		<!-- 위는 xml의 등록과정 // 아래는 어노테이션 등록과정 (스프링5) -->
+		<!-- 스프링 5는 주로 자바로 코딩 => xml코드가 어노테이션으로 변경됨
+			------------------- .class파일로만 넘어가므로, 안의 소스를 볼 수 없음 (보안이 뛰어남)
+		 -->
+		<!-- <init-param>
+			<param-name>contextClass</param-name>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<!-- 경로만 수정 -->
-			<param-value>/WEB-INF/config/application-*.xml</param-value>
-		</init-param>
+			<param-value>com.sist.config.SpringConfig</param-value>
+		</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		

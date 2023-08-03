@@ -11,6 +11,7 @@ import com.sist.vo.FoodVO;
 public interface FoodMapper {
 	// 동적 쿼리를 이용한 경우 <script></script> 사용!
 	// Q. @Select가 어디에 적용되길래 <script> 태그를 사용하는지? => 자바에서 처리하는거 아닌가.
+	// <script>를 넣지 않으면 <if> 의 태그를 읽을 수 없음.
 	@Select("<script>"
 			+ "SELECT cno,poster,title "
 			+ "FROM food_category "
@@ -37,6 +38,7 @@ public interface FoodMapper {
 	<select id="empInfoData" resultType="EmpVO" parameterType="hashmap">
 		SELECT empno, ename, job, TO_CHAR(hiredate,'YYYY-MM-DD') as dbday, sal, comm, deptno 
 		FROM emp
+		
 		<trim prefix="WHERE ename IN(" suffix=")" suffixOverrides=")" prefixOverrides="(">
 			<foreach collection="names" item="name" open="(" close=")" separator=",">
 				#{name}

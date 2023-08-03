@@ -31,4 +31,14 @@ public class SeoulDAO {
 	public int seoulNatureTotalPage() {
 		return mapper.seoulNatureTotalPage();
 	}
+	
+//	Shop
+	
+	public List<SeoulVO> seoulShopListData(Map map){
+		return mapper.seoulShopListData(map);
+	}
+	public int seoulShopTotalPage() {
+		return mapper.seoulShopTotalPage();
+	}
+	
 }
