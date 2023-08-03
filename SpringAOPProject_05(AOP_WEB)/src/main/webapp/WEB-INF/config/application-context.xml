@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!--	DispatcherServlet : 요청과 응답 전송 역할
+		HandlerMapping : Model클래스 찾아주는 역할 (@GetMapping, @PostMapping, @RequestMapping)
+		ViewResolver : JSP 찾아주는 역할 (JSP는 경로를 찾을 수 없으므로, 경로명과 확장자를 지정해야함)
+						=> 경로("/") , 확장자(".JSP")
+									  ============
+									  굳이 스프링에서 지정하는 이유는 자바에서만 스프링을 사용하는게 아니므로.
+-->
+	<!-- AOP -->
+	<aop:aspectj-autoproxy/>	<!-- AOP 어노테이션 적용 -->
+	<!-- 사용자 정의 클래스 등록 -->
+	<context:component-scan base-package="com.sist.*"/>
+
+	<!-- ViewResolver 등록 => JSP를 찾는 역할 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/"
+		p:suffix=".jsp"
+	/>
+</beans>
