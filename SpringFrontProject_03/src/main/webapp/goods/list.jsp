@@ -45,7 +45,9 @@
 						v-for="i in 10" => endPage가 들어가면 1~30까지 계속 반복되야하므로, range함수 제작
 						range => [1,2,3,4,5] / [6,7,8,9,10]
 					 --%>
-					<li v-for="i in range(startPage,endPage)" :class="i==curpage?'active':''"><a href="#">{{i}}</a></li>
+					<li v-for="i in range(startPage,endPage)" :class="i==curpage?'active':''">
+						<a href="#" @click="selectPage()">{{i}}</a>
+					</li>
 					<li v-if="endPage<totalpage"><a href="#" @click="next()">&gt;</a></li>
 				</ul>
 			</div>
@@ -106,6 +108,9 @@
 				next:function(){
 					this.curpage=this.endPage+1
 					this.send()
+				},
+				selectPage:function(){
+					this.curpage=this.$refs.
 				}
 			}
 		})
