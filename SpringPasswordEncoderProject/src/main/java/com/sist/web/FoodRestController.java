@@ -10,6 +10,8 @@ import com.sist.dao.FoodDAO;
 import com.sist.vo.*;
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class FoodRestController {
 	
@@ -53,5 +55,22 @@ public class FoodRestController {
 		String json=mapper.writeValueAsString(list);
 		return json;
 	}
+	
+	@GetMapping(value = "food/food_detail_vue.do", produces = "text/plain;charset=UTF-8")
+	public String food_detail_vue(int fno, HttpSession session) throws Exception{
+		String id=(String)session.getAttribute("id");
+		FoodVO vo=dao.foodDetailData(fno);
+		String addr=vo.getAddress();
+		addr=addr.substring(0,addr.indexOf("지번"));
+		vo.setAddress(addr.trim());
+		// jstl을 사용하지 않기 위해, 세션아이디를 따로 저장해서 넘어오기
+		vo.setSessionId(id);
+		ObjectMapper mapper=new ObjectMapper();
+		String json=mapper.writeValueAsString(vo);
+		// writeValueAsString => Jackson의 메소드 (JSONObject, JSONArray의 축약 obj.put)
+		return json;
+	}
+	
+
 	
 }

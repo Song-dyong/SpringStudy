@@ -61,7 +61,7 @@ public class MemberRestController {
 				// 비밀번호가 같다면 => 로그인된 상태
 				result="OK";
 				// Session Store
-				session.setAttribute("id", vo.getId());
+				session.setAttribute("id", id);
 				session.setAttribute("name"	, vo.getName());
 				session.setAttribute("sex", vo.getSex());
 				

@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class ReplyVO {
 	int no,fno;
-	private String id,pwd,name,sex, dbday;
+	private String id,pwd,name,sex, dbday, msg;
 	private Date regdate;
 }

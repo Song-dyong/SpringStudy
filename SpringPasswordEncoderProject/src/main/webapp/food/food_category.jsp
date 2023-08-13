@@ -27,18 +27,20 @@
 	margin: 0px auto;
 	width: 100%;
 }
-.images:hover{
+
+.images:hover {
 	cursor: pointer;
 }
 </style>
 </head>
 <body>
 	<div class="container-fluid">
-	<div class="row">
-		<div class="text-right">
-			${sessionScope.name }님 로그인 중입니다. <a href="../member/logout.do" class="btn btn-sm btn-danger">Logout</a>
+		<div class="row">
+			<div class="text-right">
+				${sessionScope.name }님 로그인 중입니다. <a href="../member/logout.do"
+					class="btn btn-sm btn-danger">Logout</a>
+			</div>
 		</div>
-	</div>
 		<div class="row">
 			<div class="text-center">
 				<button class="btn btn-sm btn-danger" @click="categoryGetData(1)">믿고
@@ -55,11 +57,11 @@
 				<div class="col-md-4" v-for="vo in cate_list">
 					<div class="thumbnail">
 						<!-- :href => v-bind:href -->
-							<img :src="vo.poster" alt="Lights" style="width: 100%" class="images"
-								@click="foodGetList(vo.cno,true)">
-							<div class="caption">
-								<p style="font-size: 12px">{{vo.title}}&nbsp;</p>
-							</div>
+						<img :src="vo.poster" alt="Lights" style="width: 100%"
+							class="images" @click="foodGetList(vo.cno,true)">
+						<div class="caption">
+							<p style="font-size: 12px">{{vo.title}}&nbsp;</p>
+						</div>
 					</div>
 				</div>
 				<div style="height: 30px"></div>
@@ -71,29 +73,33 @@
 					<h3 class="text-center">{{cate_info.title}}</h3>
 					<h4 class="text-center">{{cate_info.subject}}</h4>
 				</div>
-				<table class="table">
-					<tr>
-						<td>
-							<table class="table" v-for="fvo in food_list">
-								<tr>
-									<td width="30%" class="text-center" rowspan="4">
-										<img :src="fvo.poster" style="width:100%">
-									</td>
-									<td width="70%"><h4>{{fvo.name}}&nbsp;<span style="color:orange;">{{fvo.score}}</span></h4></td>
-								</tr>
-								<tr>
-									<td width="70%">{{fvo.address}}</td>
-								</tr>
-								<tr>
-									<td width="70%">{{fvo.phone}}</td>
-								</tr>
-								<tr>
-									<td width="70%">{{fvo.type}}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
+				<div style="overflow-y: auto; height: 500px">
+					<table class="table">
+						<tr>
+							<td>
+								<table class="table" v-for="fvo in food_list">
+									<tr>
+										<td width="30%" class="text-center" rowspan="4">
+										<a :href="'../food/food_detail.do?fno='+fvo.fno"><img :src="fvo.poster" style="width: 100%"></a>
+										</td>
+										<td width="70%"><h4>
+												<a :href="'../food/food_detail.do?fno='+fvo.fno">{{fvo.name}}</a>&nbsp;<span style="color: orange;">{{fvo.score}}</span>
+											</h4></td>
+									</tr>
+									<tr>
+										<td width="70%">{{fvo.address}}</td>
+									</tr>
+									<tr>
+										<td width="70%">{{fvo.phone}}</td>
+									</tr>
+									<tr>
+										<td width="70%">{{fvo.type}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
