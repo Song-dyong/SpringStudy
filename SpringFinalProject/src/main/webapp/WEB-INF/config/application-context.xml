@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- AOP 설정 -->
+	<aop:aspectj-autoproxy/>	<!-- @Aspect -->
+	<!-- 클래스 등록 -->
+	<context:component-scan base-package="com.sist.*"/>
+	<!-- ViewResolver 설정 -->
+	<bean id="viewResolver"			
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/"
+		p:suffix=".jsp"
+	/>	<!-- bean태그는 주로 라이브러리 사용시 등록을 위해 (어노테이션이 없으므로, 빈을 통해 메모리 할당) -->
+
+</beans>

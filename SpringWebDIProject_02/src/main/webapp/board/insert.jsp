@@ -55,6 +55,7 @@
 							<input type=button value="취소" class="btn btn-sm btn-info" onclick="javascript:history.back()">
 						</td>
 					</tr>
+					
 				</table>
 				</form>
 			</div>

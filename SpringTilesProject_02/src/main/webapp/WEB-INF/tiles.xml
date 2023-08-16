@@ -9,6 +9,16 @@
 		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/main/content.jsp"/>
 	</definition>
+	<!-- sidemenu 추가법 -->
+	<definition name="main2" template="/WEB-INF/main/main.jsp">
+		<put-attribute name="header" value="/WEB-INF/main/header.jsp"/>		
+		<put-attribute name="menu" value="/WEB-INF/main/menu.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/main/content.jsp"/>
+	</definition>
+	<definition name="adminpage/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
 	<!-- 상위의 정의를 상속받기 -->
 	<!-- <definition name="board/list" extends="main">
 		<put-attribute name="body" value="/WEB-INF/board/list.jsp"/>

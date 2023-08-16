@@ -34,8 +34,6 @@ public class ReplyDAO {
 		mapper.replyDelete(no);
 	}
 	
-
-	
 	//@Update("UPDATE springTestReply SET " + "msg=#{msg} " + "WHERE no=#{no}")
 	public void replyUpdate(ReplyVO vo) {
 		mapper.replyUpdate(vo);
