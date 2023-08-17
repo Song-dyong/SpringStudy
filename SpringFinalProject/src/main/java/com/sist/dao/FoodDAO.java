@@ -14,4 +14,8 @@ public class FoodDAO {
 	public List<CategoryVO> foodCategoryListData(){
 		return mapper.foodCategoryListData();
 	}
+	
+	public CategoryVO categoryInfoData(int cno) {
+		return mapper.categoryInfoData(cno);
+	}
 }
