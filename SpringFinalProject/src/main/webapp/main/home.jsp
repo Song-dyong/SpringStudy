@@ -5,30 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet"
-	href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet"
-	href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-<script
-	src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-<script
-	src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+<script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 <div class="wrapper row3">
   <div id="slider" class="clear"> 
     <div class="flexslider basicslider">
       <ul class="slides">
-        <li><a href="#"><img class="radius-10" src="" style="width:978px;height:400px"></a></li>
-        <li><a href="#"><img class="radius-10" src="" style="width:978px;height:400px"></a></li>
-        <li><a href="#"><img class="radius-10" src="" style="width:978px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="../images/demo/slides/back1.jpg" style="width:978px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="../images/demo/slides/back2.jpg" style="width:978px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="../images/demo/slides/back3.jpg" style="width:978px;height:400px"></a></li>
       </ul>
     </div>
+    
   </div>
 </div>
 <div class="wrapper row3">
@@ -69,7 +65,6 @@
         </li>
       </ul>
     </div>
-    <!-- ################################################################################################ -->
     <h2 class="sectiontitle">지역별 맛집 리스트</h2>
     <!-- ################################################################################################ -->
     <div class="flexslider carousel basiccarousel btmspace-80">
@@ -81,7 +76,6 @@
         </li>
       </ul>
     </div>
-    <!-- ################################################################################################ -->
     <h2 class="sectiontitle">인기 메뉴별 맛집 리스트</h2>
     <!-- ################################################################################################ -->
     <div class="flexslider carousel basiccarousel btmspace-80">
@@ -93,6 +87,7 @@
         </li>
       </ul>
     </div>
+    
     <!-- ################################################################################################ -->
     <h2 class="sectiontitle">최신 방문 맛집</h2>
     <!-- ################################################################################################ -->
@@ -116,19 +111,19 @@
   </main>
 </div>
 <script>
-   new Vue({
-      el:'.container',
-      data:{
-         cate_list:[]
-      },
-      mounted:function(){
-         axios.get('http://localhost/web/food/category_vue.do')
-         .then(response=>{
-            console.log(response.data)
-            this.cate_list=response.data
-         })
-      }
-   })
+  new Vue({
+	  el:'.container',
+	  data:{
+		  cate_list:[]
+	  },
+	  mounted:function(){
+		  axios.get('http://localhost/web/food/category_vue.do')
+		  .then(response=>{
+			  console.log(response.data)
+			  this.cate_list=response.data
+		  })
+	  }
+  })
 </script>
 </body>
 </html>

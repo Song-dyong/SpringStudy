@@ -18,4 +18,21 @@ public class FoodDAO {
 	public CategoryVO categoryInfoData(int cno) {
 		return mapper.categoryInfoData(cno);
 	}
+	
+	public List<FoodVO> foodFindData(Map map){
+		return mapper.foodFindData(map);
+	}
+	
+	public int foodFindTotalPage(Map map) {
+		return mapper.foodFindTotalPage(map);
+	}
+	
+	public FoodVO foodDetailData(int fno) {
+		return mapper.foodDetailData(fno);
+	}
+	
+	public List<FoodVO> foodListData(int cno){
+		return mapper.foodListData(cno);
+	}
+	
 }

@@ -21,4 +21,15 @@ public interface FoodMapper {
 	public List<FoodVO> foodFindData(Map map);
 	
 	public int foodFindTotalPage(Map map);
+	
+	@Select("SELECT fno,name,tel as phone,address,type,time,parking,menu,price,score,poster "
+			+ "FROM food_location "
+			+ "WHERE fno=#{fno}")
+	public FoodVO foodDetailData(int fno);
+	
+	@Select("SELECT fno, name, address, phone, type, poster,score "
+			+ "FROM food_house "
+			+ "WHERE cno=#{cno}")
+	public List<FoodVO> foodListData(int cno);
+	
 }

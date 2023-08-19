@@ -12,4 +12,24 @@ public class FoodController {
 		model.addAttribute("main_jsp","../food/food_list.jsp");
 		return "main/main";
 	}
+	
+	@GetMapping("food/food_find.do")
+	public String food_find(Model model) {
+		model.addAttribute("main_jsp","../food/food_find.jsp");
+		return "main/main";
+	}
+	
+	@GetMapping("food/food_recommand.do")
+	public String food_recommand(Model model) {
+		model.addAttribute("main_jsp","../food/food_recommand.jsp");
+		return "main/main";
+	}
+	
+	@GetMapping("food/food_detail.do")
+	public String food_detail(Model model,int fno) {
+		model.addAttribute("fno",fno);
+		model.addAttribute("main_jsp","../food/food_detail.jsp");
+		return "main/main";
+	}
+	
 }
