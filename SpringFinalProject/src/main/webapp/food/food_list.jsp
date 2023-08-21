@@ -42,20 +42,17 @@
 								<tr>
 									<td width="30%" class="text-center" rowspan="4">
 									<!-- :href는 v-for의 vo의 fno값을 읽어야하므로.. -->
-									<a :href="'../food/food_detail.do?fno='+vo.fno">
+									<a :href="'../food/food_detail_before.do?fno='+vo.fno">
 										<img :src="vo.poster" style="width: 300px;height: 240px;" class="img-rounded">
 										</a>
 									</td>
-									<td width="70%"> <h4><a href="'../food/food_detail.do?fno='+vo.fno">{{vo.name}}&nbsp;</a><span style="color: orange;">{{vo.score}}</span></h4> </td>
+									<td width="70%"> <h4><a :href="'../food/food_detail_before.do?fno='+vo.fno">{{vo.name}}&nbsp;</a><span style="color: orange;">{{vo.score}}</span></h4> </td>
 								</tr>
 								<tr>
-									<td width="70%">{{vo.address}}</td>
+									<td width="70%">{{vo.address}}&nbsp;({{vo.phone}})</td>
 								</tr>
 								<tr>
-									<td width="70%">{{vo.phone}}</td>
-								</tr>
-								<tr>
-									<td width="70%">{{vo.type}}</td>
+									<td width="70%"><b style="color:orange;">{{vo.userName}}</b>&nbsp;{{vo.rdata}}</td>
 								</tr>
 							</table>
 						</td>

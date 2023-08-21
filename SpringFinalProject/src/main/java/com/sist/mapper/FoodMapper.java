@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.sist.vo.CategoryVO;
 import com.sist.vo.FoodVO;
+import com.sist.vo.ReplyVO;
 
 public interface FoodMapper {
 	
@@ -31,5 +32,12 @@ public interface FoodMapper {
 			+ "FROM food_house "
 			+ "WHERE cno=#{cno}")
 	public List<FoodVO> foodListData(int cno);
+	
+	@Select("SELECT cno,fno,name, phone,address,type,time,parking,price,score,poster "
+			+ "FROM food_house "
+			+ "WHERE fno=#{fno}")
+	public FoodVO foodDetailHouseData(int fno);
+	
+	
 	
 }

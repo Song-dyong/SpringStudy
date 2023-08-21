@@ -18,7 +18,7 @@
 		3. 출력시 <태그>{{}}</태그>
 				속성  <a :href="">
 		4. 부모 데이터를 읽어올 때
-				Vue.component() => Child
+				Vue.component() => Chil
 				=> 메소드 , 변수를 찾는 경우
 				=> this.$parent.변수 , 메소드
 				new Vue({}) => Parent

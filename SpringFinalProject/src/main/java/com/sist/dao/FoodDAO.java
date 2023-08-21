@@ -35,4 +35,10 @@ public class FoodDAO {
 		return mapper.foodListData(cno);
 	}
 	
+	public FoodVO foodDetailHouseData(int fno) {
+		return mapper.foodDetailHouseData(fno);
+	}
+	
+	
+	
 }

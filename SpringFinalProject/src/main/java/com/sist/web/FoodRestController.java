@@ -14,6 +14,8 @@ import com.sist.vo.*;
 public class FoodRestController {
 	@Autowired
 	private FoodDAO dao;
+	@Autowired
+	private ReplyDAO rdao;
 	
 	@GetMapping(value = "food/category_vue.do", produces = "text/plain;charset=UTF-8")
 	public String food_category() throws Exception{
@@ -39,6 +41,12 @@ public class FoodRestController {
 			poster=poster.substring(0,poster.indexOf("^"));
 			poster=poster.replace("#", "&");
 			vo.setPoster(poster);
+			int count=rdao.foodReplyCount(vo.getFno());
+			if(count!=0) {
+				ReplyVO rvo=rdao.foodReplyData(vo.getFno());
+				vo.setUserName(rvo.getName());
+				vo.setRdata(rvo.getMsg());
+			}
 		}
 		
 		ObjectMapper mapper=new ObjectMapper();
@@ -99,6 +107,20 @@ public class FoodRestController {
 		String addr=vo.getAddress();
 		addr=addr.substring(0,addr.indexOf("지번"));
 		vo.setAddress(addr.trim());
+		ObjectMapper mapper=new ObjectMapper();
+		String json=mapper.writeValueAsString(vo);
+		return json;
+	}
+	
+	@GetMapping(value = "food/food_house_detail_vue.do", produces = "text/plain;charset=UTF-8")
+	public String food_house_detail_vue(int fno) throws Exception {
+		FoodVO vo=dao.foodDetailHouseData(fno);
+		String addr=vo.getAddress();
+		addr=addr.substring(0,addr.indexOf("지번"));
+		vo.setAddress(addr.trim());
+		String poster=vo.getPoster();
+		poster=poster.replace("#", "&");
+		vo.setPoster(poster);
 		ObjectMapper mapper=new ObjectMapper();
 		String json=mapper.writeValueAsString(vo);
 		return json;
