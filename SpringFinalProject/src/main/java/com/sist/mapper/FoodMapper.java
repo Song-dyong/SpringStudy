@@ -38,6 +38,11 @@ public interface FoodMapper {
 			+ "WHERE fno=#{fno}")
 	public FoodVO foodDetailHouseData(int fno);
 	
-	
-	
+	// 맛집 추천
+	@Select("SELECT DISTINCT name FROM food_location WHERE LENGTH(name)>1")
+	public List<String> foodNameGetData();
+	// 실제 정보			LENGTH(name)>1 => 한글자인 맛집을 걸러내려고
+	@Select("SELECT fno, name, poster, rownum FROM food_location "
+			+ "WHERE name=#{name} AND rownum<=1")
+	public FoodVO foodRecommandInfoData(String name);
 }

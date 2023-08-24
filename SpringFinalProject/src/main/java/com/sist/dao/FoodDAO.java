@@ -39,6 +39,12 @@ public class FoodDAO {
 		return mapper.foodDetailHouseData(fno);
 	}
 	
+	public List<String> foodNameGetData(){
+		return mapper.foodNameGetData();
+	}
 	
+	public FoodVO foodRecommandInfoData(String name) {
+		return mapper.foodRecommandInfoData(name);
+	}
 	
 }
