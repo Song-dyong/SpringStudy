@@ -2,6 +2,8 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet
@@ -15,7 +17,7 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.do</url-pattern>	
 	</servlet-mapping>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -30,21 +32,4 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	<error-page>
-		<error-code>400</error-code>
-		<location>/error/error400.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>404</error-code>
-		<location>/error/error404.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>412</error-code>
-		<location>/error/error412.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/error/error500.jsp</location>
-	</error-page>
 </web-app>
