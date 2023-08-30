@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+   margin-top:50px;
+}
+.row{
+   margin: 0px auto;
+   width : 100%;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center" th:text="${vo.title}"></h1>
+			<h1 class="text-center">상세보기</h1>
+			<table class="table">
+				<tr>
+					<!-- <td class="text-center" th:each="poster:${pList}">
+						<img th:src="${poster}" style="">
+					</td> -->
+					<td class="text-center">
+						<img th:src="${vo.poster}" style="width: 30%">
+					</td>
+				</tr>
+				<tr>
+					<td th:text="${vo.title}" class="text-center"></td>
+				</tr>
+				<tr>
+					<td th:text="${vo.cno}" class="text-center"></td>
+				</tr>
+				<tr>
+					<td th:text="${vo.subject}" class="text-center"></td>
+				</tr>
+				<tr>
+					<td>
+						<a th:href="@{/food/find}"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

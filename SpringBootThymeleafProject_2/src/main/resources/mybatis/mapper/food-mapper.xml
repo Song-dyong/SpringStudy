@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.web.mapper.FoodMapper">
+	<!-- id-method명 resultType -->
+	<select id="categoryListData" resultType="CategoryVO">
+		SELECT cno, title, poster, subject FROM food_category
+		ORDER BY cno ASC
+	</select>
+	<select id="foodFindData" resultType="CategoryVO" parameterType="hashmap">
+		SELECT cno, title, poster
+		FROM food_category WHERE title LIKE CONCAT('%',#{title},'%')
+		ORDER BY cno ASC 
+		LIMIT #{start} , 2
+	</select>
+	<select id="foodFindTotalPage" resultType="int" parameterType="String">
+		SELECT CEIL(COUNT(*)/2.0)
+		FROM food_category WHERE title LIKE CONCAT('%',#{title},'%')
+	</select>
+</mapper>

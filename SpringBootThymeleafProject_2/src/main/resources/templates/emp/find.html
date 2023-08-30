@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+   margin-top:50px;
+}
+.row{
+   margin: 0px auto;
+   width : 100%;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<form action="/emp/find" method="post">
+				<input type="text" name="fd" size="20" class="input-sm" th:value="${fd}">
+				<button class="btn btn-sm btn-primary">Search</button>
+			</form>
+		</div>
+		<div class="row">
+			<table class="table">
+				<tr>
+					<th class="text-center">empno</th>
+					<th class="text-center">ename</th>
+					<th class="text-center">job</th>
+					<th class="text-center">sal</th>
+					<th class="text-center">hiredate</th>
+				</tr>
+				<tr th:each="vo:${list}">
+					<td class="text-center" th:text="${vo.empno}"></td>
+					<td class="text-center" th:text="${vo.ename}"></td>
+					<td class="text-center" th:text="${vo.job}"></td>
+					<td class="text-center" th:text="${vo.sal}"></td>
+					<td class="text-center" th:text="${vo.hiredate}"></td>
+				</tr>
+			</table>
+		</div>
+		<div style="height: 10px;"></div>
+		<div class="row">
+			<div class="text-center">
+				<ul class="pagination">
+				  <li th:if="${startPage>1}"><a th:href="@{/emp/find(page=${startPage-1},fd=${fd})}">&lt;</a></li>
+				  <li th:if="${curpage==i?'active':''}" th:each="i:${#numbers.sequence(startPage,endPage)}"><a th:href="@{/emp/find(page=${i},fd=${fd})}" th:text=${i}></a></li>
+				  <li th:if="${endPage<totalpage}"><a th:href="@{/emp/find(page=${endPage+1},fd=${fd})}">&gt;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
