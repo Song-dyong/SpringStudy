@@ -5,9 +5,9 @@
 <mapper namespace="com.sist.mapper.FoodMapper">
 <!-- id => FoodMapper의 메소드명 / resultType => 리턴형 / parameterType => 매개변수 -->
 	<select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
-		SELECT fno, name, poster,chef, num
-		FROM (SELECT fno, name, poster,chef, rownum as num
-		FROM (SELECT fno, name, poster,chef
+		SELECT fno, name, poster, num
+		FROM (SELECT fno, name, poster, rownum as num
+		FROM (SELECT fno, name, poster
 		FROM food_location
 			<if test="column!='all'">
 				WHERE ${column} LIKE '%'||#{fd}||'%'
